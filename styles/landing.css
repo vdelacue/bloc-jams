@@ -32,6 +32,12 @@ body.landing {
 
 .point {
     position:relative;
+    display: table;
+    width: 100%;
+}
+
+.point {
+    position:relative;
     padding: 2rem;
     text-align: center;
 }
@@ -40,7 +46,7 @@ body.landing {
 	font-size: 1.25rem;
 }
 
-ion-music-note,
+.ion-music-note,
 .ion-radio-waves,
 .ion-iphone {
 	color: rgb(233,50,117);

@@ -29,6 +29,11 @@ body.landing {
      left: 2rem;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: 64rem;
+}
+
 @media (min-width: 640px) {
     html { font-size: 112%; }
     
@@ -37,11 +42,13 @@ body.landing {
     padding-left: 1rem;
     padding-right: 1rem;
     }
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 64rem;
+    
+    .column.full { width: 100%; }
+    .column.two-thirds { width: 66.7%; }
+    .column.half { width: 50%; }
+    .column.third { width: 33.3%; }
+    .column.fourth { width: 25%; }
+    .column.flow-opposite { float: right; }  
 }
 
 @media (min-width: 1024px) {
