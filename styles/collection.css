@@ -1,0 +1,26 @@
+body.collection {
+    background-image: url(../assets/images/blurred_backgrounds/blur_bg_2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+.collection-album-container {
+    position: relative;
+    margin-top: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.collection-album-container .caption p {
+    margin-top: 10px;
+}
+
+.collection-album-container .caption a.album-name {
+    color: white;
+}
+
+.collection-album-container img {
+    width: 80%;
+}
