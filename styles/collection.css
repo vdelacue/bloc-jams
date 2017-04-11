@@ -24,3 +24,15 @@ body.collection {
 .collection-album-container img {
     width: 80%;
 }
+
+.navbar-link {
+	color: white;
+}
+
+a:active {
+    background-color: white;
+}
+
+.navbar-link:hover {
+    color: rgb(233,50,117);
+}

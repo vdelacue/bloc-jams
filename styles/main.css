@@ -64,3 +64,15 @@ body.landing {
 .clearfix::after {
     clear: both;
 }
+
+.navbar-link {
+	color: white;
+}
+
+a:active {
+    background-color: white;
+}
+
+.navbar-link:hover {
+    color: rgb(233,50,117);
+}
