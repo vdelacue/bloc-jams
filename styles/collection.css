@@ -6,6 +6,10 @@ body.collection {
     background-size: cover;
 }
 
+.album-covers {
+    position: relative;
+}
+
 .collection-album-container {
     position: relative;
     margin-top: 30px;
@@ -14,10 +18,17 @@ body.collection {
 }
 
 .collection-album-container .caption p {
-    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
 }
 
-.collection-album-container .caption a.album-name {
+.collection-album-container .caption p a {
+    color: rgba(255, 255, 255, 0.6);
+	
+}
+
+.collection-album-container .caption p a.album-name {
     color: white;
 }
 
