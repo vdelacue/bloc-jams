@@ -33,11 +33,11 @@ body.album {
     width: 90%;
     margin: 1.5rem auto;
     font-weight: 300;
-    font-size: 0.75rem; /* it says 0.75em in checkpoint, I'm assuming it is a typo and they meant to write 0.75rem? */
+    font-size: 0.75em; 
     border-collapse: collapse;
 }
 
-album-view-song-item {
+.album-view-song-item {
     height: 3rem;
     border-bottom: 1px solid rgba(255,255,255,0.5);
 }
