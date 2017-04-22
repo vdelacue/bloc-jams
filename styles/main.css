@@ -101,18 +101,3 @@ body.landing {
 .clearfix::after {
     clear: both;
 }
-<<<<<<< HEAD
-=======
-
-.navbar-link {
-	color: white; 
-}
-
-a:active {
-    background-color: white;
-}
-
-.navbar-link:hover {
-    color: rgb(233,50,117);
-}
->>>>>>> checkpoint-5-html-css-collection
