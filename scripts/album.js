@@ -1,3 +1,4 @@
+//Example Album attempting to duplicate exactly as written in Bloc assignment for a third time.
 var albumPicasso = {
     title: 'The Colors',
     artist: 'Pablo Picasso',
@@ -27,6 +28,21 @@ var albumMarconi = {
         { title: 'Wrong phone number', duration: '2:15' }
     ]
 };
+//Assignment 12 Part 1: create another album with same properties as other albums with different values
+var albumTwinPeaks = {
+    title: 'Dual Spires',
+    artist: 'David Lynch',
+    label: 'The Black Lodge',
+    year: '1990',
+    albumArtUrl: 'assets/images/album_covers/22.png',
+    songs: [
+        { title: 'Wheres Annie?', duration: '1:43' },
+        { title: 'Creamed Corn', duration: '3:15' },
+        { title: 'Dougie Jones', duration: '6:13' },
+        { title: 'The owls are not what they seem', duration: '4:25' },
+        { title: 'Who killed Laura Palmer?', duration: '3:26' }
+    ]
+};
 
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
@@ -40,12 +56,23 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
+// Assignment 12 Part 2: Add an event listener to the album cover. When a user clicks it, the album page content should toggle between the three album objects: albumPicasso, albumMarconi, and your album object.
+// Event Listner format: element.addEventListener('event', functionName [, Boolean]);
+// A reference to DOM element Node to target album cover is stored in a variable, a variable is already created in setCurrentAlbum scope, need to repeat all the variables in this scope to use them since they are not outside the scope of the setCurrentAlbumScope
+
+var albumTitle = document.getElementByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+
 var setCurrentAlbum = function(album) {
-  var albumTitle = document.getElementByClassName('album-view-title')[0];
-  var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-  var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  var albumImage = document.getElementsByClassName('album-cover-art')[0];
-  var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+  albumTitle = document.getElementByClassName('album-view-title')[0];
+  albumArtist = document.getElementsByClassName('album-view-artist')[0];
+  albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+  albumImage = document.getElementsByClassName('album-cover-art')[0];
+  albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
   albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
@@ -61,7 +88,17 @@ var setCurrentAlbum = function(album) {
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 
 window.onload = function() {
-  setCurrentAlbum(albumPicasso);
+    setCurrentAlbum(albumPicasso);
+    
+    var albums = [ablbumPicasso, albumMarconi, albumTwinPeaks];
+    var index = 1;
+    albumImage.addEventListener('click', function(event) {
+        setCurrentAlbum(album);
+        index++;
+        if (index == albums.length) {
+            index = 0;
+        }
+    });    
 };
 
 songListContainer.addEventListener('mouseover', function(event) {
