@@ -41,7 +41,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 };
 
 var setCurrentAlbum = function(album) {
-  var ablbumTitle = document.getElementByClassName('album-view-title')[0];
+  var albumTitle = document.getElementByClassName('album-view-title')[0];
   var albumArtist = document.getElementsByClassName('album-view-artist')[0];
   var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
   var albumImage = document.getElementsByClassName('album-cover-art')[0];
