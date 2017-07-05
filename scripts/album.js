@@ -88,16 +88,16 @@ var setCurrentAlbum = function(album) {
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 
 window.onload = function() {
-    setCurrentAlbum(albumPicasso);
     
-    var albums = [ablbumPicasso, albumMarconi, albumTwinPeaks];
-    var index = 1;
+    var albums = [albumPicasso, albumMarconi, albumTwinPeaks];
+    var index = 2;
+    setCurrentAlbum(albums[index]);
     albumImage.addEventListener('click', function(event) {
-        setCurrentAlbum(album);
         index++;
-        if (index == albums.length) {
+        if (index === albums.length) {
             index = 0;
         }
+        setCurrentAlbum(albums[index]);
     });    
 };
 
