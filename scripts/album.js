@@ -60,7 +60,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 // Event Listner format: element.addEventListener('event', functionName [, Boolean]);
 // A reference to DOM element Node to target album cover is stored in a variable, a variable is already created in setCurrentAlbum scope, need to repeat all the variables in this scope to use them since they are not outside the scope of the setCurrentAlbumScope
 
-var albumTitle = document.getElementByClassName('album-view-title')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
 var albumArtist = document.getElementsByClassName('album-view-artist')[0];
 var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
 var albumImage = document.getElementsByClassName('album-cover-art')[0];
@@ -68,7 +68,7 @@ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
 
 var setCurrentAlbum = function(album) {
-  albumTitle = document.getElementByClassName('album-view-title')[0];
+  albumTitle = document.getElementsByClassName('album-view-title')[0];
   albumArtist = document.getElementsByClassName('album-view-artist')[0];
   albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
   albumImage = document.getElementsByClassName('album-cover-art')[0];
@@ -105,5 +105,3 @@ songListContainer.addEventListener('mouseover', function(event) {
     console.log(event.target);
 });
 
-
-    
