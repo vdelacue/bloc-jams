@@ -47,7 +47,8 @@ var albumTwinPeaks = {
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
-    +   '   <td class="song-item-number" data-song-number>' + songNumber + '</td>'
+    +   '   <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+    //+   '   <td class="song-item-number" data-song-number>' + songNumber + '</td>'  code corrected above from submission comment but would like explanation.
     +   '   <td class="song-item-titel">' + songName + '</td>'
     +   '   <td class="song-item-duration">' + songLength + '</td>'
     +   '</tr>'
@@ -108,7 +109,7 @@ window.onload = function() {
             var songItem = getSongItem(event.target);
             var songItemNumber = songItem.getAttribute('data-song-number');
             
-            if(songItemNumber !== currentlyPayingsong) {
+            if (songItemNumber !== currentlyPayingsong) {
                 songItem.innerHTML = songItemNumber;
             }
         });
@@ -118,7 +119,7 @@ window.onload = function() {
     }  
 };
 
-var findParentByClassName = finction(element, targetClass) {
+var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
@@ -154,7 +155,7 @@ var clickHandler = function(targetElement) {
         songItem.innerHTML = playButtonTemplate;
         currentlyPayingsong = null;
     } else if (currentlyPayingsong !== songItem.getAttribute('data-song-number')) {
-        var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + '"']');
+        var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
         songItem.innerHTML = pauseButtonTemplate;
         currentlyPlayingSong = songItem.getAttribute('data-song-number');
@@ -165,7 +166,7 @@ songListContainer.addEventListener('mouseover', function(event) {
     if (event.target.parentElement.className === 'album-view-song-item') {
         var songItem = getSongItem(event.target);
         
-        if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
+        if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
             songItem.innerHTML = playButtonTemplate;
         }
     }    
