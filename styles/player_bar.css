@@ -8,6 +8,11 @@
     z-index: 100;
 }
 
+.player-bar a {
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
 .player-bar a,
 .player-bar a:hover {
     color: white;
@@ -31,6 +36,14 @@
     width: 50%;
     text-align: center;
     position: relative;
+}
+
+.player-br .main-controls .previous {
+    margin-right: 16.5%;
+}
+
+.player-bar .main-controls .play-pause {
+    
 }
 
 player-bar .currently-playing {
