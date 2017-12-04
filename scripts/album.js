@@ -53,35 +53,36 @@ var createSongRow = function(songNumber, songName, songLength) {
     +   '</tr>'
     ;
     
-    return template;
+    return $(template);
 };
 
 // Assignment 12 Part 2: Add an event listener to the album cover. When a user clicks it, the album page content should toggle between the three album objects: albumPicasso, albumMarconi, and your album object.
 // Event Listner format: element.addEventListener('event', functionName [, Boolean]);
 // A reference to DOM element Node to target album cover is stored in a variable, a variable is already created in setCurrentAlbum scope, need to repeat all the variables in this scope to use them since they are not outside the scope of the setCurrentAlbumScope
 
-var albumTitle = document.getElementsByClassName('album-view-title')[0];
-var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-var albumImage = document.getElementsByClassName('album-cover-art')[0];
-var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var $albumTitle = $('.album-view-title');
+var $albumArtist = $('.album-view-artist');
+var $albumReleaseInfo = $('.album-view-release-info');
+var $albumImage = $('.album-cover-art');
+var $albumSongList = $('.album-view-song-list');
 
 
 var setCurrentAlbum = function(album) {
-  albumTitle = document.getElementsByClassName('album-view-title')[0];
-  albumArtist = document.getElementsByClassName('album-view-artist')[0];
-  albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  albumImage = document.getElementsByClassName('album-cover-art')[0];
-  albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+  $albumTitle = $('.album-view-title');
+  $albumArtist = $('.album-view-artist');
+  $albumReleaseInfo = $('.album-view-release-info');
+  $albumImage = $('.album-cover-art');
+  $albumSongList = $('.album-view-song-list');
 
-  albumTitle.firstChild.nodeValue = album.title;
-  albumArtist.firstChild.nodeValue = album.artist;
-  albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-  albumImage.setAttribute('src', album.albumArtUrl);
+  $albumTitle.text(album.title);
+  $albumArtist.text(album.artist);
+  $albumReleaseInfo.text(album.year + ' ' + album.label);
+  $albumImage.attr('src', album.albumArtUrl);
   
-  albumSongList.innerHTML = '';
+  $albumSongList.empty();
   for (var i = 0; i < album.songs.length; i++) {
-    albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+    var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+    $albumSongList.append($newRow);
   }
 };
 
