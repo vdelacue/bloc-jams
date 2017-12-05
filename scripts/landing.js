@@ -6,14 +6,10 @@ var animatePoints = function() {
          transform: 'scaleX(1) translate(0)'
         });   
     };
-    $.each($('point'), revealPoint);
+    $.each($('.point'), revealPoint);
 };
 
-var animatePoints = function(points) {
-	forEach(points, revealPoint);
-};
-
-$(window).load = function() {
+$(window).load(function() {
     
     if ($(window).height() > 950) {
         animatePoints();
