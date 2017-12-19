@@ -98,6 +98,10 @@ var setCurrentAlbum = function(album) {
   }
 };
 
+var trackIndex = funtion(album, song) {
+    return album.songs.indexOf(song);
+};
+
 var updatePlayerBarSong = function() {
     
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -105,6 +109,53 @@ var updatePlayerBarSong = function() {
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
 
+};
+
+var nextSong() = function() {
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    currentSongIndex++;
+    
+    if(currentSongIndex >= currentAlbum.songs.length) {
+        currentSongIndex = 0;
+    }
+    
+    var lastSongNumber = currentlyPlayingSongNumber;
+    
+    currentlyPlayingSongNumber = currentSongIndex + 1;
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    
+    updatePlayerBarSong();
+    
+    var $nextSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
+    
+    
+    $nextSongNumberCell.html(pauseButtonTemplate);
+    $lastSongNumberCell.html(lastSongNumber); 
+};
+
+var previousSong() = function() {
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    currentSongIndex--;
+    
+    if(currentSongIndex < 0) {
+        currentSongIndex = currentAlbum.songs.length - 1;
+    }
+    
+    var lastSongNumber = currentlyPlayingSongNumber;
+    
+    currentlyPlayingSongNumber = currentSongIndex + 1;
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    
+    updatePlayerBarSong();
+    
+    $('.main-controls .play-pause').html(playerBarPauseButton);
+    
+    var $previousSongNumberCell = $('.song-item-number [data-song-number="' + currentlyPlayingSongNumber + '"]');
+    var $lastSongNumberCell = $('.song-item-number [data-song-number="' + lastSongNumber + '"]');
+    
+    $previousSongNumberCell.html(pauseButtonTemplate);
+    $lastSongNumberCell.html(lastSongNumber); 
 };
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
