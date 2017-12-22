@@ -165,22 +165,16 @@ var playerBarPauseButton = '<span class="ion-pause"></span>';
 var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
 
+var $previousButton = $('.main-controls .previous');
+var $nextButton = $('.main-controls .next');
+
 $(document).ready(function() {
     
 var albums = [albumPicasso, albumMarconi, albumTwinPeaks];
 var index = 2;
 
-
-    
 setCurrentAlbum(albums[index]);
-    
-//albumImage.addEventListener('click', function(event) {
-//    index++;
-//    if (index === albums.length) {
-//        index = 0;
-//    }
-//    setCurrentAlbum(albums[index]);
-//});
-        
+$previousButton.click(previousSong);
+$nextButton.click(nextSong);
 
 });
