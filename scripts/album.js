@@ -1,5 +1,3 @@
-
-
 var albumTwinPeaks = {
     title: 'Dual Spires',
     artist: 'David Lynch',
@@ -42,20 +40,20 @@ var createSongRow = function(songNumber, songName, songLength) {
         
         if (currentlyPlayingSongNumber !== songNumber) {
             $(this).html(pauseButtonTemplate);
-            currentlyPlayingSongNumber = songNumber;
-            currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+            setSong(songNumber);
             updatePlayerBarSong();
         } else if (currentlyPlayingSongNumber === songNumber) {
             $(this).html(playButtonTemplate);
             $('.main-controls .play-pause').html(playerBarPlayButton);
-            currentlyPlayingSongNumber = null;
-            currentSongFromAlbum = null;
+            setSong(null);
         }
     };
     
     var onHover = function (event) {
         var songNumberCell = $(this).find('.song-item-number');
-        var songNumber = songNumberCell.attr('data-song-number');
+        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+        
+        console.log(songNumber);
         
         if(songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(playButtonTemplate);
@@ -63,8 +61,8 @@ var createSongRow = function(songNumber, songName, songLength) {
     };
     
     var offHover = function (event) {
-        var songNumberCell = parseInt($(this).find('.song-item-number'));
-        var songNumber = songNumberCell.attr('data-song-number');
+        var songNumberCell = $(this).find('.song-item-number');
+        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
         
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(songNumber);
@@ -77,6 +75,19 @@ var createSongRow = function(songNumber, songName, songLength) {
     console.log("songNumber type is " + typeof songNumber + "\n and currentlyPlayingSongNumber type is " + typeof currentlyPlayingSongNumber);
 };
 
+var setSong = function(songNumber) {
+    currentlyPlayingSongNumber = songNumber;
+    
+    // Option A
+    // currentSongFromAlbum = (songNumber !== null) ? currentAlbum.songs[songNumber - 1] : null;
+    
+    // Option B
+    if (songNumber !== null) {
+        currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+    } else {
+        currentSongFromAlbum = null;
+    }
+}
 
 var setCurrentAlbum = function(album) {
     currentAlbum = album;
@@ -122,8 +133,7 @@ var nextSong = function() {
     
     var lastSongNumber = currentlyPlayingSongNumber;
     
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    setSong(currentSongIndex + 1);
     
     updatePlayerBarSong();
     
@@ -145,8 +155,7 @@ var previousSong = function() {
     
     var lastSongNumber = currentlyPlayingSongNumber;
     
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    setSong(currentSongIndex + 1);
     
     updatePlayerBarSong();
     
@@ -179,3 +188,5 @@ $previousButton.click(previousSong);
 $nextButton.click(nextSong);
 
 });
+
+
