@@ -88,6 +88,11 @@ var setSong = function(songNumber) {
         currentSongFromAlbum = null;
     }
 }
+var getSongNumberCell = function(number) {
+    
+    return $('.song-item-number [data-song-number="' + number + '"]');
+    //returns the song number element that corresponds to that song number
+};
 
 var setCurrentAlbum = function(album) {
     currentAlbum = album;
@@ -161,8 +166,8 @@ var previousSong = function() {
     
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
-    var $previousSongNumberCell = $('.song-item-number [data-song-number="' + currentlyPlayingSongNumber + '"]');
-    var $lastSongNumberCell = $('.song-item-number [data-song-number="' + lastSongNumber + '"]');
+    var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
     
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber); 
