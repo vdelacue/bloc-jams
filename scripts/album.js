@@ -41,11 +41,19 @@ var createSongRow = function(songNumber, songName, songLength) {
         if (currentlyPlayingSongNumber !== songNumber) {
             $(this).html(pauseButtonTemplate);
             setSong(songNumber);
+            currentSoundFile.play();
             updatePlayerBarSong();
         } else if (currentlyPlayingSongNumber === songNumber) {
-            $(this).html(playButtonTemplate);
-            $('.main-controls .play-pause').html(playerBarPlayButton);
-            setSong(null);
+            
+            if (currentSoundFile.isPaused()) {
+                currentSoundFile.play();
+                $(this).html(pauseButtonTemplate);
+                $('.main-controls .play-pause').html(playerBarPauseButton);
+            } else { 
+                currentSoundFile.pause();
+                $(this).html(playButtonTemplate);
+                $('.main-controls .play-pause').html(playerBarPlayButton);
+            }
         }
     };
     
@@ -84,10 +92,15 @@ var setSong = function(songNumber) {
     // Option B
     if (songNumber !== null) {
         currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
-    currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
+        var buzzOptions = {
             formats: ['mp3'],
             preload: true
-        });
+        };
+        
+        currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, buzzOptions);
+        
+        // pretend we are now in playSong().
+        currentSoundFile.play();
     } else {
         currentSongFromAlbum = null;
     }
