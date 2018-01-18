@@ -1,17 +1,4 @@
-var albumTwinPeaks = {
-    title: 'Dual Spires',
-    artist: 'David Lynch',
-    label: 'The Black Lodge',
-    year: '1990',
-    albumArtUrl: 'assets/images/album_covers/22.png',
-    songs: [
-        { title: 'Wheres Annie?', duration: '1:43' },
-        { title: 'Creamed Corn', duration: '3:15' },
-        { title: 'Dougie Jones', duration: '6:13' },
-        { title: 'The owls are not what they seem', duration: '4:25' },
-        { title: 'Who killed Laura Palmer?', duration: '3:26' }
-    ]
-};
+
 
 var $albumTitle = $('.album-view-title');
 var $albumArtist = $('.album-view-artist');
