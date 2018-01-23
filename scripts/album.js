@@ -224,7 +224,7 @@ setCurrentAlbum(albums[index]);
 $previousButton.click(previousSong);
 $nextButton.click(nextSong);
 
-$mainPlayPauseButton.click(togglePlayFromPlayerBar());
+$mainPlayPauseButton.click(togglePlayFromPlayerBar);
     
 });
 
