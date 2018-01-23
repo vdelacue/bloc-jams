@@ -1,5 +1,3 @@
-
-
 var $albumTitle = $('.album-view-title');
 var $albumArtist = $('.album-view-artist');
 var $albumReleaseInfo = $('.album-view-release-info');
@@ -21,7 +19,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         var songNumber = parseInt($(this).attr('data-song-number'));
         
         if (currentlyPlayingSongNumber !== null) {
-            var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+            var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
             currentlyPlayingCell.html(currentlyPlayingSongNumber);
         }
         
@@ -116,12 +114,12 @@ var setCurrentAlbum = function(album) {
     $albumImage = $('.album-cover-art');
     $albumSongList = $('.album-view-song-list');
 
-  $albumTitle.text(album.title);
-  $albumArtist.text(album.artist);
-  $albumReleaseInfo.text(album.year + ' ' + album.label);
-  $albumImage.attr('src', album.albumArtUrl);
-  
-  $albumSongList.empty();
+$albumTitle.text(album.title);
+$albumArtist.text(album.artist);
+$albumReleaseInfo.text(album.year + ' ' + album.label);
+$albumImage.attr('src', album.albumArtUrl);
+
+$albumSongList.empty();
   
     for (var i = 0; i < album.songs.length; i++) {
     var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
@@ -189,6 +187,20 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber); 
 };
 
+var togglePlayFromPlayerBar = function() {
+    var songNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    if (currentSoundFile.isPaused()) {
+        currentSoundFile.play();
+        songNumberCell.html(pauseButtonTemplate);
+        $mainPlayPauseButton.html(playerBarPauseButton);
+    } else { 
+        currentSoundFile.pause();
+        songNumberCell.html(playButtonTemplate);
+        $mainPlayPauseButton.html(playerBarPlayButton);
+    }
+    
+}
+
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 var playerBarPlayButton = '<span class="ion-play"></span>';
@@ -200,9 +212,11 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $mainPlayPauseButton = $('.main-controls .play-pause');
+
 
 $(document).ready(function() {
-    
+  
 var albums = [albumPicasso, albumMarconi, albumTwinPeaks];
 var index = 2;
 
@@ -210,6 +224,31 @@ setCurrentAlbum(albums[index]);
 $previousButton.click(previousSong);
 $nextButton.click(nextSong);
 
+$mainPlayPauseButton.click(togglePlayFromPlayerBar());
+    
 });
 
 
+
+// Examples, do not use directly
+
+//
+//<div class="messages">
+//    <!--<div class="chat-window"></div>-->
+//</div>
+//
+//
+//var $el = $('.whatever');
+//
+//$el.on('click', function() {
+//    // some code here
+//});
+//
+//$el.click(function() {
+//    // some code here
+//});
+//
+//$('.messages').on('click', '.chat-window', function(event) {
+//    // this would only fire if the target of the event matches '.whatever'.
+//    // event.target
+//});
