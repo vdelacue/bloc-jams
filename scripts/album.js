@@ -144,7 +144,7 @@ var updateSeekBarWhileSongPlays = function() {
             var $seekBar = $('.seek-control .seek-bar');
             
             updateSeekPercentage($seekBar, seekBarFillRatio);
-            setCurrentTimeInPlayerBar(seekBarFillRatio);
+            setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()));
         });
     }
 };
@@ -210,7 +210,7 @@ var updatePlayerBarSong = function() {
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
-    setTotalTimeInPlayerBar();
+    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
 
 };
 
@@ -293,7 +293,7 @@ var filterTimeCode = function(timeInSeconds) {
     
     //Store variables for whole seconds and whole minutes (hint: use Math.floor() to round numbers down).
     
-    //Return the time in the format X:XX
+    return timeInSeconds; //Return the time in the format X:XX
 }
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
