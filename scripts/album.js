@@ -290,7 +290,8 @@ var setTotalTimeInPlayerBar = function(totalTime) {
 var filterTimeCode = function(timeInSeconds) {
     
     //Use the parseFloat() method to get the seconds in number form.
-    
+   var secondsNum = parseFloat(timeInSeconds % 60);
+   var minutesNum = parseFloat(timeInSeconds/60)
     //Store variables for whole seconds and whole minutes (hint: use Math.floor() to round numbers down).
     
     return timeInSeconds; //Return the time in the format X:XX
