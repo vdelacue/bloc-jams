@@ -290,11 +290,21 @@ var setTotalTimeInPlayerBar = function(totalTime) {
 var filterTimeCode = function(timeInSeconds) {
     
     //Use the parseFloat() method to get the seconds in number form.
-   var secondsNum = parseFloat(timeInSeconds % 60);
-   var minutesNum = parseFloat(timeInSeconds/60)
+    var wholeSecs = parseFloat(timeInSeconds);
+    var wholeMins = parseFloat(wholeSecs / 60);
     //Store variables for whole seconds and whole minutes (hint: use Math.floor() to round numbers down).
-    
-    return timeInSeconds; //Return the time in the format X:XX
+    wholeMins = math.floor(wholeMins);
+    var remainderSecs = (wholeSecs % 60);
+    remainderSecs = Math.floor(remainderSecs); 
+    //don't understand the Math.floor concept here but I know the assignment requests to use it here, will ask mentor. 
+    if(remainderSecs < 10){
+        remainderSecs = "0" + remainderSecs
+    };
+    console.log(wholeMins);
+    console.log(wholeSecs);
+    //Return the time in the format X:XX
+    var returnTime = wholeMins + ':' + remainderSecs;
+    return returnTime; 
 }
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
