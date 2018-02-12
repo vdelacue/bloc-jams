@@ -9,7 +9,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         '<tr class="album-view-song-item">'
     +   '   <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'       
     +   '   <td class="song-item-title">' + songName + '</td>'
-    +   '   <td class="song-item-duration">' + songLength + '</td>'
+    +   '   <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
     +   '</tr>'
     ;
     
@@ -293,7 +293,7 @@ var filterTimeCode = function(timeInSeconds) {
     var wholeSecs = parseFloat(timeInSeconds);
     var wholeMins = parseFloat(wholeSecs / 60);
     //Store variables for whole seconds and whole minutes (hint: use Math.floor() to round numbers down).
-    wholeMins = math.floor(wholeMins);
+    wholeMins = Math.floor(wholeMins);
     var remainderSecs = (wholeSecs % 60);
     remainderSecs = Math.floor(remainderSecs); 
     //don't understand the Math.floor concept here but I know the assignment requests to use it here, will ask mentor. 
