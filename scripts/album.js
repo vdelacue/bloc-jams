@@ -114,6 +114,7 @@ var getSongNumberCell = function(number) {
     
     return $('.song-item-number [data-song-number="' + number + '"]');
     //returns the song number element that corresponds to that song number
+    console.log($('.song-item-number [data-song-number="' + number + '"]'));
 };
 
 var setCurrentAlbum = function(album) {
