@@ -112,9 +112,9 @@ var seek = function(time) {
 
 var getSongNumberCell = function(number) {
     
-    return $('.song-item-number [data-song-number="' + number + '"]');
+    return $('.song-item-number[data-song-number="' + number + '"]');
     //returns the song number element that corresponds to that song number
-    console.log($('.song-item-number [data-song-number="' + number + '"]'));
+    console.log($('.song-item-number[data-song-number="' + number + '"]'));
 };
 
 var setCurrentAlbum = function(album) {
@@ -212,7 +212,6 @@ var updatePlayerBarSong = function() {
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
     setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
-
 };
 
 var nextSong = function() {
@@ -228,17 +227,18 @@ var nextSong = function() {
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
     updateSeekBarWhileSongPlays();
-    
+    //Try adding line231 to solve resubmission issue on jquery seek bar assignment
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
     updatePlayerBarSong();
     
     var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
     var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
     
-    
     $nextSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
     
 };
+console.log(nextSong);
 
 var previousSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
@@ -265,6 +265,7 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber);
     
 };
+console.log(previousSong);
 
 var togglePlayFromPlayerBar = function() {
     var songNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
