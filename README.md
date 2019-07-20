@@ -7,7 +7,7 @@ Bloc Jams is a free digital music player site that allows the user to listen to 
 
 ### **Explanation**
 Bloc Jams was my first major project during my career at Bloc.io. The site consists of a Landing (home) Page that provides information regarding the attractive features of the site: including being able to choose your own music, unlimited streaming, ad-free listening, and mobile enabled platforms to listen to music on the go. From the home page the user is able to navigate to the Library Page (‘collections’). This page includes lists of albums that the user is free to choose. Once the user selects an album they are directed to an Album Page that includes a fully functional and interactive player bar with volume controls. Here the user can see the lists of songs within an album and can play, pause and skip songs at their discretion as well as adjust volume.  
-@@ -50,9 +51,12 @@ In *phase two* I chose to style the pages very differently using **CSS** and **b
+In *phase two* I chose to style the pages very differently using **CSS** and **b
 
 [logo]: /img/blocJamsReactHome.png "Phase Two Home Page of Bloc Jams"
 
@@ -20,7 +20,8 @@ The Bloc Jams project fell victim to a common issue in front-end web development
 
 ### **Solution**
 Refactoring was needed in both phase one and phase two because of the common issue in front-end web development mentioned above: lengthy, redundant, and complex code. The Solution was to take the **Vanilla Javascript** and refactor it with **JQuery** in Phase One and then the entire application from phase one was refactored in phase two using **React**. React was clearly better suited to execute this single page application.
-@@ -61,11 +65,16 @@ In order to understand the functionality and what **JQuery** accomplishes, I nee
+
+In order to understand the functionality and what **JQuery** accomplishes, I needed to learn plain javascript.
 
 Similarly, phase one was instrumental in being able to understand and execute phase two. Phase two involved refactoring all the code in a new project using **React**. It is important to see that phase one forced you to write the entire site using the basic fundamentals of front-end web development, **HTML**, **CSS**, **Vanilla Javascript** and **JQuery**. Many of the frameworks, libraries and packages used today bypass the need to write such lengthy code and make frontend web development much easier. However it is important to understand what all these frameworks libraries and packages are accomplishing behind the scenes. This knowledge is essential to really understand programming and what is happening when a user enters and interacts with a site or application. Phase one although not commonly practiced taught fundamentals that paved the way for phase two.
 
